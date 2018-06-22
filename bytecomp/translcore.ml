@@ -547,7 +547,7 @@ and transl_case_try {c_lhs; c_guard; c_rhs} =
     | _ -> ()
   in
   iter_exn_names Translprim.add_exception_ident c_lhs;
-  Misc.try_finally
+  Pervasives.try_finally
     (fun () -> c_lhs, transl_guard c_guard c_rhs)
     (fun () ->
        iter_exn_names Translprim.remove_exception_ident c_lhs)

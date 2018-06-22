@@ -190,7 +190,7 @@ module Git = struct
     let tmp = Filename.temp_file "lintapidiff" suffix in
     let cmd = Printf.sprintf "git show %s >%s 2>/dev/null"
         (Filename.quote obj) (Filename.quote tmp) in
-    Misc.try_finally (fun () ->
+    Pervasives.try_finally (fun () ->
         match Sys.command cmd with
         | 0 -> Ok (f tmp)
         | 128 -> Error `Not_found

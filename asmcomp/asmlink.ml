@@ -351,7 +351,7 @@ let link ppf objfiles output_name =
     Asmgen.compile_unit output_name
       startup !Clflags.keep_startup_file startup_obj
       (fun () -> make_startup_file ppf units_tolink);
-    Misc.try_finally
+    Pervasives.try_finally
       (fun () ->
         call_linker (List.map object_file_name objfiles)
                     startup_obj output_name)

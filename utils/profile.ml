@@ -89,7 +89,7 @@ let record_call ?(accumulate = false) name f =
     else Measure_diff.zero (), Hashtbl.create 2
   in
   hierarchy := E this_table;
-  Misc.try_finally f
+  Pervasives.try_finally f
     (fun () ->
        hierarchy := E prev_hierarchy;
        let end_measure = Measure.create () in
