@@ -24,12 +24,6 @@ let fatal_errorf fmt = Format.kasprintf fatal_error fmt
 
 (* Exceptions *)
 
-let try_finally work cleanup =
-  let result = (try work () with e -> cleanup (); raise e) in
-  cleanup ();
-  result
-;;
-
 type ref_and_value = R : 'a ref * 'a -> ref_and_value
 
 let protect_refs =
